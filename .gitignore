@@ -5,3 +5,4 @@ projects/
 *.log
 .DS_Store
 .idea
+token.txt
