@@ -57,3 +57,10 @@ services:
       - ${PWD}/nginx.conf:/etc/nginx/conf.d/default.conf
     networks:
       - merginmaps
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes: 
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+    command: certonly --webroot -w /var/www/certbot --force-renewal --email mail@philippe-guigue.de -d mergin.waldplan.de -d *.mergin.waldplan.de --agree-tos
