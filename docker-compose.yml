@@ -51,6 +51,7 @@ services:
     ports:
       - "8080:80"
       - "80:80"
+      - "443:443"
     volumes:
       - ./projects:/data  # map data dir to host
       - ${PWD}/nginx.conf:/etc/nginx/conf.d/default.conf
