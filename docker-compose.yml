@@ -47,11 +47,12 @@ services:
   certbot:
     image: certbot/certbot
     container_name: certbot
-    volumes: 
+    volumes:
       - ./certbot/conf:/etc/letsencrypt
       - ./certbot/www:/var/www/certbot
     #command: certonly --staging --webroot -w /var/www/certbot --force-renewal --email mail@philippe-guigue.de -d waldplan.de --agree-tos
-    command: certonly --webroot --webroot-path=/var/www/certbot --email philippe.guigue@posteo.net --agree-tos --no-eff-email --force-renewal -d waldplan.de -d www.waldplan.de
+    #command: certonly -vvv --staging --break-my-certs  --webroot --webroot-path=/var/www/certbot --email philippe.guigue@posteo.net --agree-tos --no-eff-email --force-renewal -d mergin.waldplan.de -d www.mergin.waldplan.de
+    command: certonly --webroot --break-my-certs --webroot-path=/var/www/certbot --email philippe.guigue@posteo.net --agree-tos --no-eff-email --force-renewal -d mergin.waldplan.de -d www.mergin.waldplan.de
   proxy:
     image: nginx
     container_name: merginmaps-proxy
